@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const db = require("./db");
 const index = require("./db/index");
-const table = require("console.table");
 
 function viewTable() {
     db
