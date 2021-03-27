@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const db = require("./db");
 const index = require("./db/index");
 
+// This shows us our table of selected data
 function viewTable() {
     db
     .showAll()
@@ -12,6 +13,7 @@ function viewTable() {
 }
 viewTable();
 
+// Asks the user which function they would like to perform
 function start() {
     inquirer.prompt(
         {
@@ -33,6 +35,7 @@ function start() {
          ]   
         }
     )
+    // Routes to the proper function
     .then((choices) => {
         switch(choices.mainMenu) {
             case "-1- View Departments":
@@ -77,6 +80,7 @@ function start() {
     });
 };
 
+// View all Departments
 function vDepartmentsTable() {
     db.getDepartments()
     .then((result) => {
@@ -85,6 +89,7 @@ function vDepartmentsTable() {
     })
 };
 
+// View all roles
 function vRolesTable() {
     db.viewRole()
     .then((result) => {
@@ -93,6 +98,7 @@ function vRolesTable() {
     })
 };
 
+// View all employees
 function vEmployeesTable() {
     db.getEmployee()
     .then((result) => {
@@ -101,6 +107,7 @@ function vEmployeesTable() {
     })
 };
 
+// Add a department
 function addDepartment() {
     inquirer.prompt({
         type: "input",
@@ -113,6 +120,7 @@ function addDepartment() {
     })
 };
 
+// Delete a department
 function deleteDepartment() {
     db.getDepartments()
     .then((dInfo) => {
@@ -133,6 +141,7 @@ function deleteDepartment() {
     })
 };
 
+// Add a role
 function addRole() {
     db.getDepartments()
     .then((dInfo) => {
@@ -169,6 +178,7 @@ function addRole() {
     })
 };
 
+// Delete a role
 function deleteRole() {
     db.getDepartments()
     .then((dInfo) => {
@@ -207,6 +217,7 @@ function deleteRole() {
     })
 };
 
+// Add an employee
 function addEmployee() {
     db.getDepartments()
     .then((dInfo) => {
@@ -258,6 +269,7 @@ function addEmployee() {
     })
 };
 
+// Delete an employee
 function deleteEmployee() {
     db.getEmployee()
     .then((eInfo) => {
